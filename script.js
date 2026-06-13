@@ -70,7 +70,7 @@ const questions = [
   'i sent seno a message and genuinely could not tell if he had seen it or not for 10+ days',
   'i have played catan with seno one on one. just the two of us.',
   'i have thrown hands at seno',
-  'i have personally witnessed seno consume alcohol'
+  ''
 ];
 
 const rare = new Set([18, 19, 61, 59, 60, 63, 62]);
@@ -80,11 +80,11 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
 function verdictFor(percent) {
-  if (percent < 25) return 'bro do you even know seno';
-  if (percent < 45) return "you've met seno";
-  if (percent < 65) return 'you know seno-adjacent';
-  if (percent < 85) return 'yeah you actually know him';
-  return "bro you ARE seno's person";
+  if (percent < 25) return 'bro do you even know seno or did you just wander in holding a clipboard';
+  if (percent < 45) return "you've met seno. the lore has lightly bonked you on the forehead";
+  if (percent < 65) return 'you know seno-adjacent. respectable little side character energy';
+  if (percent < 85) return 'yeah you actually know him. mildly concerning, very documented';
+  return "bro you ARE seno's person. the archive has accepted your fingerprints";
 }
 
 function slugName(name) {
@@ -128,7 +128,19 @@ function renderQuestions() {
     input.dataset.number = String(n);
     row.querySelector('label').setAttribute('for', `q-${n}`);
     row.querySelector('.question-text').textContent = text;
-    input.addEventListener('change', saveChecks);
+    if (n === 67) {
+      row.classList.add('mystery-67');
+      row.querySelector('.question-text').innerHTML = '<span class="empty-question" aria-label="question 67 intentionally blank"></span>';
+      const img = document.createElement('img');
+      img.className = 'q67-photo';
+      img.src = 'assets/generated/q-67.svg';
+      img.alt = 'Seno evidence image 67';
+      row.appendChild(img);
+    }
+    input.addEventListener('change', event => {
+      saveChecks();
+      if (n === 67 && event.target.checked) juggleShake();
+    });
     list.appendChild(row);
   });
 
@@ -145,6 +157,12 @@ function currentChecked() {
 
 function saveChecks() {
   localStorage.setItem(CHECKED_KEY, JSON.stringify($$('input[type="checkbox"]').map(input => input.checked)));
+}
+
+function juggleShake() {
+  document.body.classList.remove('juggle-shake');
+  void document.body.offsetWidth;
+  document.body.classList.add('juggle-shake');
 }
 
 function restoreChecks() {
@@ -180,7 +198,7 @@ function scoreLink() {
 function updateShareText() {
   const { checked, percent, verdict } = getResult();
   const link = scoreLink();
-  $('#shareText').value = `i scored ${checked}/67 (${percent}%) on the seno purity test — ${verdict}. take it here: ${link}`;
+  $('#shareText').value = `i scored ${checked}/67 (${percent}%) on the seno purity test — ${verdict}. take it here before the chocolate milk gets involved: ${link}`;
 }
 
 async function shareScore() {
