@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200">
+  <defs>
+    <clipPath id="clip"><rect x="12" y="12" width="296" height="176" rx="18"/></clipPath>
+    <filter id="grain"><feTurbulence baseFrequency=".85" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .16"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="320" height="200" fill="#fffdf4"/>
+  <g clip-path="url(#clip)">
+    <image href="../seno-2.jpg" x="0" y="0" width="320" height="200" preserveAspectRatio="xMidYMid slice" opacity=".34"/>
+    <rect width="320" height="200" fill="#fff7df" opacity=".76"/>
+    <circle cx="192" cy="90" r="26" fill="#6b351f" opacity="0.16"/><circle cx="245" cy="131" r="29" fill="#6b351f" opacity="0.16"/><circle cx="50" cy="24" r="10" fill="#6b351f" opacity="0.16"/><circle cx="103" cy="65" r="13" fill="#6b351f" opacity="0.16"/><circle cx="156" cy="106" r="16" fill="#6b351f" opacity="0.16"/>
+    <path d="M218 42 L282 66 L270 128 L206 110 Z" fill="none" stroke="#6b351f" stroke-width="7" opacity=".76"/><circle cx="244" cy="86" r="18" fill="#6b351f" opacity=".42"/>
+    <rect width="320" height="200" filter="url(#grain)"/>
+  </g>
+  <rect x="12" y="12" width="296" height="176" rx="18" fill="none" stroke="#6b351f" stroke-width="4"/>
+  <text x="28" y="54" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="900" fill="#6b351f">38</text>
+  <text x="28" y="82" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="900" letter-spacing="1.4" fill="#1d1823">SENO EVIDENCE</text>
+  <text x="28" y="154" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="900" fill="#1d1823">TWO PERSON CATAN</text>
+</svg>

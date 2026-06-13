@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200">
+  <defs>
+    <clipPath id="clip"><rect x="12" y="12" width="296" height="176" rx="18"/></clipPath>
+    <filter id="grain"><feTurbulence baseFrequency=".85" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .16"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="320" height="200" fill="#fffdf4"/>
+  <g clip-path="url(#clip)">
+    <image href="../seno-gallery-2.jpg" x="0" y="0" width="320" height="200" preserveAspectRatio="xMidYMid slice" opacity=".34"/>
+    <rect width="320" height="200" fill="#fff7df" opacity=".76"/>
+    <circle cx="107" cy="125" r="17" fill="#193a8a" opacity="0.16"/><circle cx="160" cy="166" r="20" fill="#193a8a" opacity="0.16"/><circle cx="213" cy="59" r="23" fill="#193a8a" opacity="0.16"/><circle cx="266" cy="100" r="26" fill="#193a8a" opacity="0.16"/><circle cx="71" cy="141" r="29" fill="#193a8a" opacity="0.16"/>
+    <ellipse cx="210" cy="48" rx="13" ry="9" fill="#d23553" transform="rotate(319 210 48)"/><ellipse cx="228" cy="78" rx="13" ry="9" fill="#6b351f" transform="rotate(330 228 78)"/><ellipse cx="246" cy="108" rx="13" ry="9" fill="#354f2f" transform="rotate(341 246 108)"/><ellipse cx="264" cy="48" rx="13" ry="9" fill="#5c3b84" transform="rotate(352 264 48)"/>
+    <rect width="320" height="200" filter="url(#grain)"/>
+  </g>
+  <rect x="12" y="12" width="296" height="176" rx="18" fill="none" stroke="#193a8a" stroke-width="4"/>
+  <text x="28" y="54" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="900" fill="#193a8a">29</text>
+  <text x="28" y="82" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="900" letter-spacing="1.4" fill="#1d1823">SENO EVIDENCE</text>
+  <text x="28" y="154" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="900" fill="#1d1823">V3 WITNESS</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200">
+  <defs>
+    <clipPath id="clip"><rect x="12" y="12" width="296" height="176" rx="18"/></clipPath>
+    <filter id="grain"><feTurbulence baseFrequency=".85" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .16"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="320" height="200" fill="#fffdf4"/>
+  <g clip-path="url(#clip)">
+    <image href="../seno-gallery-2.jpg" x="0" y="0" width="320" height="200" preserveAspectRatio="xMidYMid slice" opacity=".34"/>
+    <rect width="320" height="200" fill="#fff7df" opacity=".76"/>
+    <circle cx="251" cy="81" r="19" fill="#354f2f" opacity="0.16"/><circle cx="56" cy="122" r="22" fill="#354f2f" opacity="0.16"/><circle cx="109" cy="163" r="25" fill="#354f2f" opacity="0.16"/><circle cx="162" cy="56" r="28" fill="#354f2f" opacity="0.16"/><circle cx="215" cy="97" r="31" fill="#354f2f" opacity="0.16"/>
+    <path d="M218 42 L282 66 L270 128 L206 110 Z" fill="none" stroke="#354f2f" stroke-width="7" opacity=".76"/><circle cx="244" cy="86" r="18" fill="#354f2f" opacity=".42"/>
+    <rect width="320" height="200" filter="url(#grain)"/>
+  </g>
+  <rect x="12" y="12" width="296" height="176" rx="18" fill="none" stroke="#354f2f" stroke-width="4"/>
+  <text x="28" y="54" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="900" fill="#354f2f">53</text>
+  <text x="28" y="82" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="900" letter-spacing="1.4" fill="#1d1823">SENO EVIDENCE</text>
+  <text x="28" y="154" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="900" fill="#1d1823">MIGHT SLEEP</text>
+</svg>
