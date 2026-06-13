@@ -1,6 +1,10 @@
 # The Seno Purity Test
 
-A personalized rice-purity-style static website for Seno.
+A personalized Rice Purity Test-style static website for everyone in Seno lore.
+
+## Live site
+
+https://pranjalbhatia710.github.io/seno-purity-test/
 
 ## Run locally
 
@@ -11,15 +15,15 @@ python3 -m http.server 4173
 
 Open: http://127.0.0.1:4173
 
-## Photos
+## Current format
 
-The live site now includes downloaded images from the shared Google Photos album:
+- 67-question Rice Purity-style continuous checklist
+- Score starts at 100 and drops as boxes are checked
+- Category breaks for texting, chocolate milk, climbing, Hilly, room 860, hackathons, etc.
+- Goofy per-question hover/check captions
+- Actual Seno photos from the shared album in the header shrine and background collage
+- Copy result, reset, and random friend-fill buttons
 
-- `assets/seno-1.jpg` through `assets/seno-3.jpg` feed the floating hero cards.
-- `assets/seno-gallery-1.jpg` through `assets/seno-gallery-9.jpg` feed the evidence-wall collage.
+## Secret note
 
-## Notes
-
-- No API keys are needed for the current build.
-- Do not commit API keys. Configure model/image providers locally through environment variables.
-- This is pure HTML/CSS/JS, so it can be deployed to GitHub Pages, Netlify, Vercel, or any static host.
+Do not commit or paste API keys. If image generation is needed, configure a rotated key locally via environment variables outside chat/tool logs.

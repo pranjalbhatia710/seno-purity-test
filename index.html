@@ -4,93 +4,63 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Seno Purity Test</title>
-  <meta name="description" content="A very specific rice-purity-style test for people who know Seno." />
+  <meta name="description" content="A hella personal rice-purity-style test for everyone who knows Seno." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="grain"></div>
-  <div class="aurora aurora-one"></div>
-  <div class="aurora aurora-two"></div>
+  <div class="bg-collage" aria-hidden="true">
+    <img src="assets/seno-gallery-1.jpg" alt="" />
+    <img src="assets/seno-gallery-2.jpg" alt="" />
+    <img src="assets/seno-gallery-4.jpg" alt="" />
+    <img src="assets/seno-gallery-8.jpg" alt="" />
+  </div>
 
-  <main class="shell">
-    <section class="hero" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow">Definitely not clinically validated</p>
+  <main class="page">
+    <section class="rice-paper">
+      <header class="masthead">
+        <div class="stamp">67 questions</div>
         <h1>The Seno Purity Test</h1>
-        <p class="dek">67 oddly specific ways to find out whether you actually know Seno, or whether you have merely existed near him while he drank chocolate milk and contemplated determinism.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#test">Take the test</a>
-          <button class="button ghost" id="randomizeBtn" type="button">Chaos sample</button>
-        </div>
-      </div>
+        <p class="subtitle">A highly scientific measure of how deep you are in the Seno cinematic universe.</p>
+        <p class="caution"><strong>Caution:</strong> This is not a bucket list. Completing every item may result in chocolate milk dependency, 3am philosophy, and involuntary climbing assessment of campus furniture.</p>
+      </header>
 
-      <div class="seno-stage" aria-label="3D Seno themed objects">
-        <div class="photo-orbit">
-          <div class="photo-card photo-a"><span>drop<br>Seno<br>photo</span></div>
-          <div class="photo-card photo-b"><span>860</span></div>
-          <div class="photo-card photo-c"><span>V8?</span></div>
+      <section class="seno-shrine" aria-label="Seno photo shrine">
+        <figure class="polaroid big tilt-left"><img src="assets/seno-1.jpg" alt="Seno photo"><figcaption>reply pending...</figcaption></figure>
+        <figure class="polaroid tilt-right"><img src="assets/seno-2.jpg" alt="Seno photo"><figcaption>hilly lore</figcaption></figure>
+        <div class="score-box" aria-live="polite">
+          <p>Your Seno Purity Score:</p>
+          <output id="scoreValue">100</output>
+          <span>/100</span>
+          <div class="score-bar"><i id="meterFill"></i></div>
+          <p id="verdict">Untouched by the Seno cinematic universe.</p>
         </div>
-        <div class="milk-carton" aria-hidden="true">
-          <div class="carton-top"></div>
-          <div class="carton-face"><strong>CHOCO</strong><span>MILK</span></div>
-          <div class="carton-side"></div>
-        </div>
-        <div class="climb-wall" aria-hidden="true">
-          <i></i><i></i><i></i><i></i><i></i><i></i>
-        </div>
-      </div>
+        <figure class="polaroid tilt-left"><img src="assets/seno-3.jpg" alt="Seno photo"><figcaption>vibe-based response ETA</figcaption></figure>
+      </section>
+
+      <nav class="actions" aria-label="test actions">
+        <a href="#test" class="btn primary">Start test</a>
+        <button id="randomizeBtn" class="btn" type="button">Fill like a random friend</button>
+        <button id="resetBtn" class="btn" type="button">Reset</button>
+        <button id="shareBtn" class="btn" type="button">Copy result</button>
+      </nav>
+
+      <section class="everyone-card">
+        <h2>For everyone taking this</h2>
+        <p>Check anything you have personally witnessed. The score starts at 100 and drops as you admit how much Seno lore you have survived. Tap a row for a tiny goofy Seno artifact.</p>
+      </section>
+
+      <ol class="purity-list" id="test"></ol>
     </section>
 
-    <section class="scoreboard" aria-live="polite">
-      <div>
-        <p class="eyebrow">Your Seno score</p>
-        <div class="score"><span id="scoreValue">100</span><span>/100</span></div>
-      </div>
-      <div class="meter" aria-hidden="true"><span id="meterFill"></span></div>
-      <p id="verdict" class="verdict">Untouched by the Seno cinematic universe.</p>
-      <button class="button primary" id="shareBtn" type="button">Copy result</button>
-    </section>
-
-    <section class="instructions">
-      <h2>Rules</h2>
-      <p>Check every thing you have personally witnessed or experienced. The more boxes you check, the lower your “purity” score gets. This is lovingly unserious.</p>
-      <p class="photo-note">Now powered by the actual Seno photo dump: the orbit cards, lore reel, and room-860 neon are built around the shared album.</p>
-    </section>
-
-    <section class="lore-board" aria-label="Seno photo lore board">
-      <div class="lore-copy">
-        <p class="eyebrow">Hyper-personalization patch</p>
-        <h2>Seno evidence wall</h2>
-        <p>Chocolate milk aura, climbing menace energy, Hilly-shift mystique, and late-night existential static. If you know, you know.</p>
-      </div>
-      <div class="photo-reel">
-        <img src="assets/seno-gallery-1.jpg" alt="Seno lore photo 1" />
-        <img src="assets/seno-gallery-2.jpg" alt="Seno lore photo 2" />
-        <img src="assets/seno-gallery-3.jpg" alt="Seno lore photo 3" />
-        <img src="assets/seno-gallery-4.jpg" alt="Seno lore photo 4" />
-        <img src="assets/seno-gallery-5.jpg" alt="Seno lore photo 5" />
-        <img src="assets/seno-gallery-6.jpg" alt="Seno lore photo 6" />
-        <img src="assets/seno-gallery-7.jpg" alt="Seno lore photo 7" />
-        <img src="assets/seno-gallery-8.jpg" alt="Seno lore photo 8" />
-        <img src="assets/seno-gallery-9.jpg" alt="Seno lore photo 9" />
-      </div>
-    </section>
-
-    <section class="test" id="test"></section>
+    <aside class="floating-lore" aria-label="Seno lore stickers">
+      <div class="milk-3d"><b>CHOCO</b><span>MILK</span></div>
+      <div class="hold-wall"><i></i><i></i><i></i><i></i><strong>V8?</strong></div>
+      <div class="room-sign">860</div>
+    </aside>
   </main>
-
-  <template id="categoryTemplate">
-    <article class="category-card">
-      <div class="category-head">
-        <p class="category-kicker"></p>
-        <h2></h2>
-      </div>
-      <ol></ol>
-    </article>
-  </template>
 
   <script src="script.js"></script>
 </body>
