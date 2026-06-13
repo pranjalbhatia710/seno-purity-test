@@ -139,8 +139,12 @@ function renderQuestions() {
     }
     input.addEventListener('change', event => {
       saveChecks();
+      updateCadModel();
       if (n === 67 && event.target.checked) juggleShake();
     });
+    row.addEventListener('mouseenter', () => setCadFocus(n, text));
+    row.addEventListener('focusin', () => setCadFocus(n, text));
+    row.addEventListener('mouseleave', () => setCadFocus(null));
     list.appendChild(row);
   });
 
@@ -302,14 +306,94 @@ function deleteEntry(id) {
 function resetTest() {
   $$('input[type="checkbox"]').forEach(input => { input.checked = false; });
   saveChecks();
+  updateCadModel();
   $('#resultPanel').classList.add('hidden');
+}
+
+function buildCadModel() {
+  const orbit = $('#cadOrbit');
+  if (!orbit) return;
+  orbit.innerHTML = '';
+  questions.forEach((_, index) => {
+    const n = index + 1;
+    const node = document.createElement('button');
+    node.type = 'button';
+    node.className = `cad-node${n === 67 ? ' mystery' : ''}`;
+    node.dataset.number = String(n);
+    node.dataset.label = `Q${String(n).padStart(2, '0')}`;
+    const angle = index * 0.92;
+    const ring = 22 + (index % 5) * 9;
+    const x = 50 + Math.cos(angle) * ring;
+    const y = 50 + Math.sin(angle * 1.17) * (18 + (index % 4) * 7);
+    const z = (index % 9) * 7;
+    node.style.setProperty('--x', `${Math.max(7, Math.min(93, x))}%`);
+    node.style.setProperty('--y', `${Math.max(12, Math.min(88, y))}%`);
+    node.style.setProperty('--z', `${z}px`);
+    node.addEventListener('click', () => {
+      const input = document.querySelector(`#q-${n}`);
+      input?.click();
+      document.querySelector(`[data-number="${n}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    node.addEventListener('mouseenter', () => setCadFocus(n, questions[index]));
+    node.addEventListener('mouseleave', () => setCadFocus(null));
+    orbit.appendChild(node);
+  });
+  $('#cadViewport')?.addEventListener('pointermove', event => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const px = ((event.clientX - rect.left) / rect.width - .5) * 18;
+    const py = ((event.clientY - rect.top) / rect.height - .5) * -14;
+    event.currentTarget.style.setProperty('--tilt-y', `${px}deg`);
+    event.currentTarget.style.setProperty('--tilt-x', `${py}deg`);
+  });
+  updateCadModel();
+}
+
+function updateCadModel() {
+  const checked = currentChecked();
+  const status = $('#cadStatus');
+  const score = $('#cadScore');
+  if (score) score.textContent = `${checked}/67 extruded`;
+  if (status) {
+    status.textContent = checked === 0
+      ? 'awaiting lore input'
+      : checked < 10
+        ? 'tiny lore extrusion detected'
+        : checked < 34
+          ? 'incident mesh becoming suspicious'
+          : checked < 67
+            ? 'full Seno topology forming'
+            : 'unlicensed 67-dimensional object detected';
+  }
+  $$('.cad-node').forEach(node => {
+    const input = document.querySelector(`#q-${node.dataset.number}`);
+    node.classList.toggle('extruded', Boolean(input?.checked));
+  });
+}
+
+function setCadFocus(number, text = '') {
+  $$('.cad-node').forEach(node => node.classList.toggle('active', Number(node.dataset.number) === number));
+  const status = $('#cadStatus');
+  if (!status) return;
+  if (!number) {
+    updateCadModel();
+    return;
+  }
+  status.textContent = number === 67 ? 'Q67: blank object, dangerous vibes' : `Q${number}: ${text.slice(0, 46)}${text.length > 46 ? '...' : ''}`;
+}
+
+function toggleCadMode() {
+  const off = document.body.classList.toggle('cad-off');
+  $('#cadToggleBtn').textContent = off ? 'CAD mode off' : 'CAD mode on';
+  $('#cadToggleBtn').setAttribute('aria-pressed', String(!off));
 }
 
 renderSharedCard();
 renderQuestions();
+buildCadModel();
 renderLeaderboard();
 
 $('#calculateBtn').addEventListener('click', () => calculateScore(true));
+$('#cadToggleBtn').addEventListener('click', toggleCadMode);
 $('#resetBtn').addEventListener('click', resetTest);
 $('#shareBtn').addEventListener('click', shareScore);
 $('#copyTextBtn').addEventListener('click', copyShareText);
