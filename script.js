@@ -417,15 +417,15 @@ renderQuestions();
 buildCadModel();
 renderLeaderboard();
 
-$('#calculateBtn').addEventListener('click', () => calculateScore(true));
-$('#cadToggleBtn').addEventListener('click', toggleCadMode);
-$('#resetBtn').addEventListener('click', resetTest);
-$('#shareBtn').addEventListener('click', shareScore);
-$('#copyTextBtn').addEventListener('click', copyShareText);
-$('#submitScoreBtn').addEventListener('click', submitScore);
-$('#refreshBoardBtn').addEventListener('click', renderLeaderboard);
-$('#unlockAdminBtn').addEventListener('click', unlockAdmin);
-$('#nameInput').addEventListener('input', updateShareText);
-$('#boardRows').addEventListener('click', event => {
+$('#calculateBtn')?.addEventListener('click', () => calculateScore(true));
+$('#cadToggleBtn')?.addEventListener('click', toggleCadMode);
+$('#resetBtn')?.addEventListener('click', resetTest);
+$('#shareBtn')?.addEventListener('click', shareScore);
+$('#copyTextBtn')?.addEventListener('click', copyShareText);
+$('#submitScoreBtn')?.addEventListener('click', submitScore);
+$('#refreshBoardBtn')?.addEventListener('click', renderLeaderboard);
+$('#unlockAdminBtn')?.addEventListener('click', unlockAdmin);
+$('#nameInput')?.addEventListener('input', updateShareText);
+$('#boardRows')?.addEventListener('click', event => {
   if (event.target.matches('.delete-btn')) deleteEntry(event.target.dataset.id);
 });

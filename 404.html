@@ -10,21 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=graphics-v2" />
+  <link rel="stylesheet" href="styles.css?v=forms-clean" />
 </head>
 <body>
-  <div class="ambient-stage" aria-hidden="true">
-    <div class="orb orb-one"></div>
-    <div class="orb orb-two"></div>
-    <div class="blueprint-rings"></div>
-  </div>
   <main class="page-shell">
     <header class="masthead">
-      <div class="hero-chip-strip" aria-hidden="true">
-        <span class="hero-chip milk">chocolate milk vector</span>
-        <span class="hero-chip climb">climbability index</span>
-        <span class="hero-chip chaos">Q67 unknown object</span>
-      </div>
       <p class="kicker">friend group diagnostic instrument</p>
       <h1>the seno purity test</h1>
       <p class="subtitle">check every Seno moment you have personally witnessed. lower purity means deeper lore. question 67 is between you, the checkbox, and whatever just happened.</p>
@@ -40,33 +30,8 @@
 
     <section class="controls" aria-label="test controls">
       <button id="calculateBtn" class="button primary" type="button">calculate my score</button>
-      <button id="cadToggleBtn" class="button" type="button" aria-pressed="true">CAD mode on</button>
       <button id="resetBtn" class="button" type="button">reset</button>
       <a class="button" href="#leaderboard">leaderboard</a>
-    </section>
-
-    <section id="cadLab" class="cad-lab" aria-label="interactive text to cad lore scanner">
-      <div class="cad-copy">
-        <p class="eyebrow">text to cad lore engine</p>
-        <h2>Seno Incident Model v67</h2>
-        <p>Every checked sentence extrudes into the blueprint. Hover a question to lock the scanner onto it. Tick the blank 67 and the model starts doing nonsense.</p>
-      </div>
-      <div class="cad-viewport" id="cadViewport">
-        <div class="cad-scanbeam" aria-hidden="true"></div>
-        <div class="cad-grid" aria-hidden="true"></div>
-        <svg class="cad-wires" id="cadWires" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
-        <div class="cad-orbit" id="cadOrbit" aria-hidden="true"></div>
-        <div class="cad-photo-stack" aria-hidden="true">
-          <img src="assets/seno-1.jpg" alt="" />
-          <img src="assets/seno-2.jpg" alt="" />
-          <img src="assets/generated/q-67.svg" alt="" />
-        </div>
-        <div class="cad-reticle" aria-hidden="true"></div>
-        <div class="cad-readout">
-          <span id="cadStatus">awaiting lore input</span>
-          <strong id="cadScore">0/67 extruded</strong>
-        </div>
-      </div>
     </section>
 
     <ol id="questionList" class="question-list"></ol>
@@ -86,7 +51,7 @@
         <button id="copyTextBtn" class="button" type="button">copy text</button>
       </div>
       <textarea id="shareText" readonly aria-label="copyable share text"></textarea>
-      <p class="tiny-note">The share link works as a static GitHub Pages link. Database mode can be wired to Supabase once a project URL and anon key are added.</p>
+      <p class="tiny-note">The leaderboard is saved locally in this static version. Supabase can be wired later if you want a shared public board.</p>
     </section>
 
     <section id="leaderboard" class="leaderboard-card">
@@ -107,7 +72,6 @@
         <label for="adminPassword">password</label>
         <input id="adminPassword" type="password" placeholder="enter admin password" />
         <button id="unlockAdminBtn" class="button" type="button">unlock delete controls</button>
-        <p class="tiny-note">Static fallback password is set in the code for this lo-fi version. Supabase can enforce real deletes later.</p>
       </details>
     </section>
   </main>
@@ -121,6 +85,6 @@
     </li>
   </template>
 
-  <script src="script.js?v=graphics-v2"></script>
+  <script src="script.js?v=forms-clean"></script>
 </body>
 </html>
