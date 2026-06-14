@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=forms-clean" />
+  <link rel="stylesheet" href="styles.css?v=q67empty" />
 </head>
 <body>
   <main class="page-shell">
@@ -51,7 +51,7 @@
         <button id="copyTextBtn" class="button" type="button">copy text</button>
       </div>
       <textarea id="shareText" readonly aria-label="copyable share text"></textarea>
-      <p class="tiny-note">The leaderboard is saved locally in this static version. Supabase can be wired later if you want a shared public board.</p>
+      <p class="tiny-note">The share link works as a static GitHub Pages link. Database mode can be wired to Supabase once a project URL and anon key are added.</p>
     </section>
 
     <section id="leaderboard" class="leaderboard-card">
@@ -72,6 +72,7 @@
         <label for="adminPassword">password</label>
         <input id="adminPassword" type="password" placeholder="enter admin password" />
         <button id="unlockAdminBtn" class="button" type="button">unlock delete controls</button>
+        <p class="tiny-note">Static fallback password is set in the code for this lo-fi version. Supabase can enforce real deletes later.</p>
       </details>
     </section>
   </main>
@@ -85,6 +86,6 @@
     </li>
   </template>
 
-  <script src="script.js?v=forms-clean"></script>
+  <script src="script.js?v=q67empty"></script>
 </body>
 </html>
