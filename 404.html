@@ -10,11 +10,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=cad-immersive" />
+  <link rel="stylesheet" href="styles.css?v=graphics-v2" />
 </head>
 <body>
+  <div class="ambient-stage" aria-hidden="true">
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="blueprint-rings"></div>
+  </div>
   <main class="page-shell">
     <header class="masthead">
+      <div class="hero-chip-strip" aria-hidden="true">
+        <span class="hero-chip milk">chocolate milk vector</span>
+        <span class="hero-chip climb">climbability index</span>
+        <span class="hero-chip chaos">Q67 unknown object</span>
+      </div>
       <p class="kicker">friend group diagnostic instrument</p>
       <h1>the seno purity test</h1>
       <p class="subtitle">check every Seno moment you have personally witnessed. lower purity means deeper lore. question 67 is between you, the checkbox, and whatever just happened.</p>
@@ -42,8 +52,15 @@
         <p>Every checked sentence extrudes into the blueprint. Hover a question to lock the scanner onto it. Tick the blank 67 and the model starts doing nonsense.</p>
       </div>
       <div class="cad-viewport" id="cadViewport">
+        <div class="cad-scanbeam" aria-hidden="true"></div>
         <div class="cad-grid" aria-hidden="true"></div>
+        <svg class="cad-wires" id="cadWires" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
         <div class="cad-orbit" id="cadOrbit" aria-hidden="true"></div>
+        <div class="cad-photo-stack" aria-hidden="true">
+          <img src="assets/seno-1.jpg" alt="" />
+          <img src="assets/seno-2.jpg" alt="" />
+          <img src="assets/generated/q-67.svg" alt="" />
+        </div>
         <div class="cad-reticle" aria-hidden="true"></div>
         <div class="cad-readout">
           <span id="cadStatus">awaiting lore input</span>
@@ -104,6 +121,6 @@
     </li>
   </template>
 
-  <script src="script.js?v=cad-immersive"></script>
+  <script src="script.js?v=graphics-v2"></script>
 </body>
 </html>

@@ -326,9 +326,13 @@ function buildCadModel() {
     const x = 50 + Math.cos(angle) * ring;
     const y = 50 + Math.sin(angle * 1.17) * (18 + (index % 4) * 7);
     const z = (index % 9) * 7;
-    node.style.setProperty('--x', `${Math.max(7, Math.min(93, x))}%`);
-    node.style.setProperty('--y', `${Math.max(12, Math.min(88, y))}%`);
+    const pxPos = Math.max(7, Math.min(93, x));
+    const pyPos = Math.max(12, Math.min(88, y));
+    node.style.setProperty('--x', `${pxPos}%`);
+    node.style.setProperty('--y', `${pyPos}%`);
     node.style.setProperty('--z', `${z}px`);
+    node.dataset.x = pxPos.toFixed(2);
+    node.dataset.y = pyPos.toFixed(2);
     node.addEventListener('click', () => {
       const input = document.querySelector(`#q-${n}`);
       input?.click();
@@ -338,6 +342,7 @@ function buildCadModel() {
     node.addEventListener('mouseleave', () => setCadFocus(null));
     orbit.appendChild(node);
   });
+  renderCadWires();
   $('#cadViewport')?.addEventListener('pointermove', event => {
     const rect = event.currentTarget.getBoundingClientRect();
     const px = ((event.clientX - rect.left) / rect.width - .5) * 18;
@@ -346,6 +351,26 @@ function buildCadModel() {
     event.currentTarget.style.setProperty('--tilt-x', `${py}deg`);
   });
   updateCadModel();
+}
+
+function renderCadWires() {
+  const svg = $('#cadWires');
+  if (!svg) return;
+  const nodes = $$('.cad-node');
+  const pairs = [[1,11],[4,8],[10,15],[18,21],[28,36],[40,56],[50,64],[65,67],[20,67],[1,67]];
+  svg.innerHTML = pairs.map(([a, b]) => {
+    const from = nodes[a - 1];
+    const to = nodes[b - 1];
+    if (!from || !to) return '';
+    const x1 = from.dataset.x;
+    const y1 = from.dataset.y;
+    const x2 = to.dataset.x;
+    const y2 = to.dataset.y;
+    const hot = b === 67 || a === 67 ? ' class="hot"' : '';
+    const cx = (Number(x1) + Number(x2)) / 2;
+    const cy = Math.max(8, Math.min(92, (Number(y1) + Number(y2)) / 2 - 12));
+    return `<path${hot} d="M ${x1} ${y1} Q ${cx.toFixed(2)} ${cy.toFixed(2)} ${x2} ${y2}" />`;
+  }).join('');
 }
 
 function updateCadModel() {

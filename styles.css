@@ -39,20 +39,95 @@ body::before {
   z-index: -1;
 }
 
+.ambient-stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -2;
+}
+.orb {
+  position: absolute;
+  width: 34vmax;
+  height: 34vmax;
+  border-radius: 50%;
+  filter: blur(32px);
+  opacity: .38;
+  mix-blend-mode: multiply;
+  animation: orbFloat 16s ease-in-out infinite alternate;
+}
+.orb-one { left: -10vmax; top: 6vmax; background: #9edbff; }
+.orb-two { right: -12vmax; top: 18vmax; background: #ffc0a8; animation-delay: -7s; }
+.blueprint-rings {
+  position: absolute;
+  right: -160px;
+  top: 120px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle, rgba(23,43,111,.12) 0 1px, transparent 1px 38px),
+    conic-gradient(from 20deg, transparent 0 20deg, rgba(23,43,111,.09) 20deg 21deg, transparent 21deg 60deg);
+  opacity: .62;
+  animation: blueprintSpin 55s linear infinite;
+}
+
 .page-shell {
   width: min(900px, calc(100% - 24px));
   margin: 24px auto 64px;
   padding: clamp(18px, 4vw, 42px);
-  background: var(--paper);
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255,253,248,.96), rgba(255,253,248,.91)),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(23,43,111,.045) 31px 32px);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.page-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, rgba(23,43,111,.08), transparent),
+    radial-gradient(circle at 10% 0%, rgba(255,243,196,.85), transparent 18rem);
+  opacity: .72;
 }
 
 .masthead {
+  position: relative;
   text-align: center;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--line);
+  z-index: 1;
 }
+.hero-chip-strip {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border: 1px solid rgba(23,43,111,.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,.74);
+  box-shadow: 0 8px 22px rgba(23,43,111,.08);
+  color: #28305a;
+  font-family: Inter, Arial, sans-serif;
+  font-size: .66rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.hero-chip.milk { transform: rotate(-2deg); }
+.hero-chip.climb { transform: translateY(-3px) rotate(1deg); }
+.hero-chip.chaos { transform: rotate(2deg); border-style: dashed; color: #7b2d28; }
 
 .kicker, .eyebrow {
   margin: 0 0 8px;
@@ -151,15 +226,64 @@ h1 {
   --tilt-x: 0deg;
   --tilt-y: 0deg;
   position: relative;
-  min-height: 280px;
-  border: 1px solid rgba(23,43,111,.52);
-  border-radius: 16px;
+  min-height: 340px;
+  border: 1px solid rgba(145,216,255,.62);
+  border-radius: 20px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,.24), transparent 8rem),
-    linear-gradient(135deg, #081a4a, #0f2d63 55%, #07122f);
+    radial-gradient(circle at 35% 28%, rgba(255,240,166,.22), transparent 8rem),
+    radial-gradient(circle at 72% 62%, rgba(142,244,255,.22), transparent 9rem),
+    linear-gradient(135deg, #06133b, #0f2d63 52%, #050b20);
   transform-style: preserve-3d;
   perspective: 900px;
+  box-shadow: inset 0 0 80px rgba(142,244,255,.13), 0 18px 42px rgba(7,18,47,.22);
+}
+.cad-viewport::before,
+.cad-viewport::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.cad-viewport::before {
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.055) 0 1px, transparent 1px 4px);
+  mix-blend-mode: screen;
+  opacity: .45;
+}
+.cad-viewport::after {
+  background: linear-gradient(115deg, transparent 0 24%, rgba(255,255,255,.2) 26%, transparent 32% 100%);
+  transform: translateX(-70%);
+  animation: glassSweep 5.2s ease-in-out infinite;
+}
+.cad-scanbeam {
+  position: absolute;
+  inset: -20% 0;
+  background: linear-gradient(180deg, transparent 0 40%, rgba(142,244,255,.22) 48%, rgba(255,240,166,.18) 50%, transparent 59% 100%);
+  filter: blur(.5px);
+  animation: scanDown 4.8s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+.cad-wires {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  opacity: .7;
+  filter: drop-shadow(0 0 6px rgba(142,244,255,.45));
+}
+.cad-wires path {
+  fill: none;
+  stroke: rgba(142,244,255,.36);
+  stroke-width: .35;
+  stroke-dasharray: 3 2;
+  vector-effect: non-scaling-stroke;
+  animation: wireMarch 3s linear infinite;
+}
+.cad-wires path.hot {
+  stroke: rgba(255,240,166,.78);
+  stroke-width: .55;
 }
 .cad-grid {
   position: absolute;
@@ -177,9 +301,44 @@ h1 {
 .cad-orbit {
   position: absolute;
   inset: 18px;
+  z-index: 4;
   transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
   transform-style: preserve-3d;
   transition: transform .12s linear;
+}
+.cad-photo-stack {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 5;
+  display: grid;
+  gap: 8px;
+  pointer-events: none;
+}
+.cad-photo-stack img {
+  width: 68px;
+  height: 68px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(142,244,255,.28), 0 10px 24px rgba(0,0,0,.28);
+  transform: rotate(-3deg);
+  opacity: .82;
+}
+.cad-photo-stack img:nth-child(2) { transform: rotate(4deg) translateX(-10px); }
+.cad-photo-stack img:nth-child(3) { transform: rotate(-7deg) translateX(4px); background: #fff; }
+.cad-photo-stack::after {
+  content: "evidence deck";
+  color: rgba(225,248,255,.82);
+  font-family: Inter, Arial, sans-serif;
+  font-size: .58rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  position: absolute;
+  right: -11px;
+  top: 0;
 }
 .cad-node {
   --x: 50%;
@@ -270,6 +429,7 @@ h1 {
   font-family: Inter, Arial, sans-serif;
   font-size: .78rem;
   backdrop-filter: blur(8px);
+  z-index: 6;
 }
 .cad-readout strong { color: #fff0a6; }
 
@@ -279,6 +439,11 @@ body.cad-off .question-row { border-left-color: var(--line); }
 @keyframes gridDrift { to { background-position: 36px 36px, 36px 36px, 9px 9px, 9px 9px; } }
 @keyframes reticleSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 @keyframes nodePulse { to { transform: translate(-50%, -50%) translateZ(var(--z)) scale(1.05); } }
+@keyframes orbFloat { to { transform: translate3d(4vmax, -3vmax, 0) scale(1.12); } }
+@keyframes blueprintSpin { to { transform: rotate(360deg); } }
+@keyframes glassSweep { 0%, 55% { transform: translateX(-80%); } 100% { transform: translateX(85%); } }
+@keyframes scanDown { from { transform: translateY(-70%); } to { transform: translateY(70%); } }
+@keyframes wireMarch { to { stroke-dashoffset: -20; } }
 
 .question-list {
   margin: 0;
